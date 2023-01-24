@@ -1,1 +1,45 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <app-product-item
+    *ngFor="let product; in: cartProducts"
+    [product]="product"
+    ]
+  ></app-product-item>
+  <div class="cart-item-">
+    <div class="cart-item-details">
+      <h1>product items</h1>
+    </div>
+  </div>
+  <div class="form-margin">
+    <form>
+      <h5>Fill you information to cofirm order</h5>
+      <input
+        class="input-margin"
+        type="text"
+        name="name"
+        placeholder="full name"
+        pattern="([a-zA-Z]+\s)+([a-zA-Z]+)"
+        minlength="3"
+      />
+      <br />
+      <input
+        class="input-margin"
+        type="text"
+        name="address"
+        placeholder="address"
+        pattern="([a-zA-Z-]+\s)+(([a-zA-Z-]+)\s)*\d+"
+        minlenght="3"
+      />
+      <br />
+      <input
+        class="input-margin"
+        type="text"
+        name="creditCard"
+        pattern="(\d{4}(\s)?){4}"
+        placeholder="credit card numbers"
+        minlength="16"
+      />
+      <br />
+      <button type="submit"><a routerLink="/confirmation">Submit</a></button>
+    </form>
+  </div>
+</div>

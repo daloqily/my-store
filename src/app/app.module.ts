@@ -11,10 +11,11 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
 import { ProductService } from "./services/product.service";
 import { HttpClientModule } from "@angular/common/http";
+import { RouterLink } from "@angular/router";
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CartComponent, ConfirmationComponent, ProductListComponent, ProductItemComponent, ProductItemDetailComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [ProductService],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, HeaderComponent, CartComponent, ConfirmationComponent, ProductListComponent, ProductItemComponent, ProductItemDetailComponent],
+    providers: [ProductService],
+    bootstrap: [AppComponent],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterLink]
 })
 export class AppModule {}

@@ -5,6 +5,11 @@ img {
 
 .form-margin {
   margin-bottom: 12px;
+  margin-left: 500px;
+}
+
+.input-margin {
+  margin-bottom: 12px;
 }
 
 .cart-item {

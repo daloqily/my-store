@@ -1,9 +1,12 @@
-<div class="product-container">
+
+<div  class="product-container">
   <h1></h1>
-  <img class="product-image" alt="product image " src="{{ product.url }}" />
+  <a routerLink="/product-detail" > 
+  <img class="product-image" alt="product image " src="{{ product.url }}" /> </a>
   <h4>{{ product.name }}</h4>
   <h5>{{product.description}}</h5>
   <h4>{{ product.price }} SR</h4>
+
   <select class="select-input">
     <option
       *ngFor="let opt of options"
@@ -13,5 +16,7 @@
       {{ opt.value }}
     </option>
   </select>
-  <button class="add-btn" (click)="addToCart(product)">Add</button>
+  <button class="add-btn" (click)="addToCart(product)">Add</button>  
+
 </div>
+

@@ -23,3 +23,8 @@ img {
 .back-link {
   margin-top: 8px;
 }
+.product-details {
+  align-self: center;
+  padding-left: 40px;
+  min-width: 200px;
+}
