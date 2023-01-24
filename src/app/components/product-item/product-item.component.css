@@ -1,10 +1,19 @@
-.product-image {
+
+.add-btn {
+  
+  top: 50%;
+  border-radius: 5px;
+  background-color: #0a0a23;
+  color: #fff;
+}
+
+.product-image {      
   list-style-type: none;
   width: 290px;
   padding: 20px;
-  margin: 6px 6px;
-  border: 1px solid #33b5e5;
-}
+  margin: 6px 6px;        
+  border: 1px solid #33B5E5;
+} 
 
 .product-container {
   margin-top: 64px;
@@ -16,14 +25,6 @@
 }
 
 .select-input {
-  width: 108px;
+  width: 108px; 
   margin-bottom: 8px;
-}
-
-.add-btn {
-  
-  top: 50%;
-  border-radius: 5px;
-  background-color: #0a0a23;
-  color: #fff;
 }

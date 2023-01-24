@@ -2,6 +2,7 @@
   <h1></h1>
   <img class="product-image" alt="product image " src="{{ product.url }}" />
   <h4>{{ product.name }}</h4>
+  <h5>{{product.description}}</h5>
   <h4>{{ product.price }} SR</h4>
   <select class="select-input">
     <option
@@ -12,5 +13,5 @@
       {{ opt.value }}
     </option>
   </select>
-  <button class="add-btn" (click)="addToCart()">Add</button>
+  <button class="add-btn" (click)="addToCart(product)">Add</button>
 </div>

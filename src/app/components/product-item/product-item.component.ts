@@ -7,6 +7,8 @@ import { Product } from "src/app/models/Product";
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
+  @Output() OnAmountSelect:EventEmitter<Product> = new EventEmitter;
+  @Output() AddToCart:EventEmitter<Product> = new EventEmitter;
   amount = 0;
   options = [
     { value: 1 },
@@ -22,13 +24,14 @@ export class ProductItemComponent implements OnInit {
   ];
 
   constructor() {
-    this.product = {
-      id: -1,
-      name: "",
-      price: 0,
-      url: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      description: "",
-    };
+    this.product ={
+      id:-1,
+      name:"test",
+      price:0,
+      url:"",
+      description:"test des"
+    }
+    
   }
 
   ngOnInit(): void {}
@@ -36,5 +39,8 @@ export class ProductItemComponent implements OnInit {
     this.amount = value;
   }
 
-  addToCart(): void {}
+  addToCart(product:Product): void {
+    //
+    alert("added to cart")
+  }
 }

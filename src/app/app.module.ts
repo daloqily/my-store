@@ -9,11 +9,12 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
-
+import { ProductService } from "./services/product.service";
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [AppComponent, HeaderComponent, CartComponent, ConfirmationComponent, ProductListComponent, ProductItemComponent, ProductItemDetailComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
