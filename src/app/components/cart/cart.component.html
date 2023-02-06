@@ -1,12 +1,11 @@
 <div class="cart-container">
-  <app-product-item
-    *ngFor="let product; in: cartProducts"
-    [product]="product"
-    ]
-  ></app-product-item>
-  <div class="cart-item-">
+  <div class="cart-item-" *ngFor="let product of cartProducts">
     <div class="cart-item-details">
-      <h1>product items</h1>
+      <img class="img" alt="product image " src="{{ product.url }}" />
+      <h5 class="h5">{{ product.name }}</h5>
+      <h6>{{ product.description }}</h6>
+      <h5 class="h5">{{ product.price }} SR</h5>
+      <h5 class="h5">amount: {{ amount }}</h5>
     </div>
   </div>
   <div class="form-margin">

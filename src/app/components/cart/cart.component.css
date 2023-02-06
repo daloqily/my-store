@@ -25,7 +25,12 @@ img {
   align-items: left;
   margin-left: 80px;
 }
-
+.h4 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
 .number-input {
   width: 80px;
   text-align: center;

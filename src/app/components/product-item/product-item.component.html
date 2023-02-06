@@ -1,8 +1,10 @@
 <div class="product-container">
   <h1></h1>
-  <a routerLink="/product-detail" onclick="onDetailClick()">
-    <img class="product-image" alt="product image " src="{{ product.url }}" />
-  </a>
+  <button (click)="onDetailClick(product)">
+    <a routerLink="/product-detail">
+      <img class="product-image" alt="product image " src="{{ product.url }}" />
+    </a>
+  </button>
 
   <h4>{{ product.name }}</h4>
   <h5>{{ product.description }}</h5>
@@ -17,5 +19,6 @@
       {{ opt.value }}
     </option>
   </select>
-  <button class="add-btn" (click)="addToCart(product)">Add</button>
+
+  <button class="add-btn" (click)="addToCart(product, amount)">Add</button>
 </div>
