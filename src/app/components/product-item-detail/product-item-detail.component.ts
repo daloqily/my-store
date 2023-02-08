@@ -1,15 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Product } from "src/app/models/Product";
-import { ProductDataService } from "src/app/services/product-data.service";
+import { ActivatedRoute } from "@angular/router";
 import { ProductService } from "src/app/services/product.service";
-
 @Component({
   selector: "app-product-item-detail",
   templateUrl: "./product-item-detail.component.html",
   styleUrls: ["./product-item-detail.component.css"],
 })
 export class ProductItemDetailComponent implements OnInit {
-  product: Product;
+  @Input() product: Product;
 
   @Output() OnAmountSelect: EventEmitter<Product> = new EventEmitter();
   @Output() AddToCart: EventEmitter<Product> = new EventEmitter();
@@ -27,10 +26,14 @@ export class ProductItemDetailComponent implements OnInit {
     { value: 10 },
   ];
 
-  constructor(public _productDataService: ProductDataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-    this.product = this._productDataService.product;
+    const params = this.route.snapshot.params;
+    this.product = this.productService.getProductById(params["id"]);
   }
   onAmountSelect(value: number): void {
     this.amount = value;

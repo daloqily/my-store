@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Product } from "src/app/models/Product";
-import { ProductDataService } from "src/app/services/product-data.service";
 import { CartService } from "src/app/services/cart.service";
 @Component({
   selector: "app-product-item",
@@ -26,11 +25,7 @@ export class ProductItemComponent implements OnInit {
     { value: 10 },
   ];
 
-
-  constructor(
-    public _productDataService: ProductDataService,
-    private cartService: CartService
-  ) {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {}
 
@@ -38,12 +33,7 @@ export class ProductItemComponent implements OnInit {
     this.amount = value;
   }
 
-  onDetailClick(product: Product): void {
-    this._productDataService.product = product;
-  }
-
-  addToCart(product: Product, amount:number): void {
-
+  addToCart(product: Product, amount: number): void {
     this.cartService.addToCart(product, amount);
     alert("Your Product Has Been Added successfully");
   }
