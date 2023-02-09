@@ -5,19 +5,24 @@ import { Product } from "../models/Product";
 })
 export class CartService {
   cartProducts: Product[] = [];
-  amount: number;
+  // amount: number;
+  cartTotal: number;
 
   addToCart(product: Product, amount: number) {
     this.cartProducts.push(product);
-    this.amount = amount;
+    alert(product.price * amount);
+    //this.calculateCart();
   }
 
   getItems(): Product[] {
     return this.cartProducts;
   }
 
-  calculateCart(product: Product): number {
-    return product.price * this.amount;
+  calculateCart(): number {
+    for (let i = 0; i < this.cartProducts.length; i++) {
+      this.cartTotal = +this.cartProducts[i].price;
+    }
+    return this.cartTotal;
   }
 
   constructor() {}
