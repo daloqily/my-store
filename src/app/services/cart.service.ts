@@ -16,5 +16,9 @@ export class CartService {
     return this.cartProducts;
   }
 
+  calculateCart(product: Product): number {
+    return product.price * this.amount;
+  }
+
   constructor() {}
 }
