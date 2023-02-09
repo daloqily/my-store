@@ -10,6 +10,10 @@ export class CartComponent implements OnInit {
   @Input() product: Product;
   cartProducts = this.cartService.getItems();
   cartTotal: number = this.cartService.calculateCart();
+  name:string ='';
+  adress:string='';
+  creditCard:string='';
+
   // amount = this.cartService.amount;
 
   constructor(private cartService: CartService) {}
@@ -18,4 +22,6 @@ export class CartComponent implements OnInit {
   ngOnChange(): void{
     this.cartTotal = this.cartService.calculateCart();
   }
-}
+  onSubmit():void{
+
+}}

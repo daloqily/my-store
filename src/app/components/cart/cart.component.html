@@ -8,7 +8,40 @@
     </div>
   </div>
   <div class="form-margin">
-    <form>
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-margin">
+      <label class="label-margin">Name</label>
+      <input
+        class="input-margin"
+        type="text"
+        name="name"
+        required
+        minlength="6"
+        [(ngModel)]="name"
+      />
+
+      <label class="label-margin">Address</label>
+      <input
+        class="input-margin"
+        type="text"
+        name="Address"
+        [(ngModel)]="adress"
+      />
+
+      <label class="label-margin">Card</label>
+      <input
+        class="input-margin"
+        type="text"
+        required
+        minlength="10"
+        [(ngModel)]="creditCard"
+      />
+      <h5 class="h5">Total: {{ cartTotal }}</h5>
+      <button class="label-margin" type="submit" [disabled]="form.invalid">
+        <a routerLink="/confirmation">Submit</a>
+      </button>
+    </form>
+
+    <!--    <form>
       <h5>Fill you information to cofirm order</h5>
       <input
         class="input-margin"
@@ -39,6 +72,6 @@
       <br />
       <h5 class="h5">Total: {{ cartTotal }}</h5>
       <button type="submit"><a routerLink="/confirmation">Submit</a></button>
-    </form>
+    </form> -->
   </div>
 </div>

@@ -6,10 +6,18 @@ img {
 .form-margin {
   margin-bottom: 12px;
   margin-left: 500px;
+  flex-direction: row;
+}
+.label-margin {
+  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-right: 300px;
 }
 
 .input-margin {
   margin-bottom: 12px;
+  margin-right: 300px;
+  margin-top: 10px;
 }
 
 .cart-item {
