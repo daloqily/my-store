@@ -39,7 +39,7 @@ export class ProductItemDetailComponent implements OnInit {
   }
   onAmountSelect(product: Product, value: number): void {
     product.amount = value;
-    alert(product.amount);
+    //alert(product.amount);
   }
 
   addToCart(product: Product): void {
