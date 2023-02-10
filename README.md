@@ -5,7 +5,7 @@ Developing a single-page app through Angular
 
 ## Key Features
 
-# view list of products
+### view list of products
 
 # View Details of a product
 
