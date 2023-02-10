@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Product } from "src/app/models/Product";
 import { CartService } from "src/app/services/cart.service";
+import { FormsModule } from "@angular/forms";
 @Component({
   selector: "app-product-item",
   templateUrl: "./product-item.component.html",
@@ -29,12 +30,15 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onAmountSelect(value: number): void {
-    this.amount = value;
+  onAmountSelect(product: Product, value: number): void {
+    product.amount = value;
+    alert(product.amount);
   }
 
-  addToCart(product: Product, amount: number): void {
-    this.cartService.addToCart(product, this.amount);
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    this.cartService.calculateCart();
+    //alert(product.price * product.amount);
     alert("Your Product Has Been Added successfully");
   }
 }

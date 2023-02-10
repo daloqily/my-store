@@ -37,12 +37,14 @@ export class ProductItemDetailComponent implements OnInit {
     const params = this.route.snapshot.params;
     this.product = this.productService.getProductById(params["id"]);
   }
-  onAmountSelect(value: number): void {
-    this.amount = value;
+  onAmountSelect(product: Product, value: number): void {
+    product.amount = value;
+    alert(product.amount);
   }
 
-  addToCart(product: Product, amount: number): void {
-    this.cartService.addToCart(product, this.amount);
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    this.cartService.calculateCart();
     alert("your product is added successfullly to the cart ");
   }
 }

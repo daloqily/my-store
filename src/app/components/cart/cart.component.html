@@ -1,77 +1,139 @@
 <div class="cart-container">
+  <div *ngIf="cartProducts.length == 0" class="empty-cart-message">
+    Empty cart!
+  </div>
+  <div *ngIf="cartProducts.length != 0" >
   <div class="cart-item-" *ngFor="let product of cartProducts">
     <div class="cart-item-details">
       <img class="img" alt="product image " src="{{ product.url }}" />
-      <h5 class="h5">{{ product.name }}</h5>
+      <h5>{{ product.name }}</h5>
       <h6>{{ product.description }}</h6>
-      <h5 class="h5">{{ product.price }} SR</h5>
+      <h5>{{ product.price }} SR</h5>
+      <button class="add-btn" (click)="removerFromCart(product)">remove</button>
+      <select
+        class="select-input"
+        [(ngModel)]="amount"
+        (ngModelChange)="updateAmount(product, $event)"
+      >
+        <option *ngFor="let opt of options" [ngValue]="product.amount">
+          {{ opt.value }}
+        </option>
+      </select>
     </div>
   </div>
+</div>
   <div class="form-margin">
-    <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-margin">
-      <label class="label-margin">Name</label>
-      <input
-        class="input-margin"
-        type="text"
-        name="name"
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <h6 class="h6">Name</h6>
+      <input 
         required
-        minlength="6"
+        minlength="3"
+        placeholder="min length is 6"
+        type="text"
+        name="title"
+        #FormTitle="ngModel"
         [(ngModel)]="name"
       />
-
-      <label class="label-margin">Address</label>
+      
+  
+      <h6 class="h6">Address</h6>
       <input
-        class="input-margin"
+        required
+        minlength="8"
+        placeholder="min length is 8"
         type="text"
-        name="Address"
-        [(ngModel)]="adress"
+        name="body"
+        [(ngModel)]="address"
       />
+      
 
-      <label class="label-margin">Card</label>
+      <h6 class="h6">Card Number</h6>
       <input
-        class="input-margin"
-        type="text"
         required
         minlength="10"
+        maxlength="10"
+        placeholder="min length is 10"
+        pattern="[0-9]+"
+        type="text"
+        name="body"
         [(ngModel)]="creditCard"
       />
-      <h5 class="h5">Total: {{ cartTotal }}</h5>
-      <button class="label-margin" type="submit" [disabled]="form.invalid">
-        <a routerLink="/confirmation">Submit</a>
-      </button>
-    </form>
+      <br>
+      <br>
 
-    <!--    <form>
-      <h5>Fill you information to cofirm order</h5>
-      <input
-        class="input-margin"
-        type="text"
-        name="name"
-        placeholder="full name"
-        pattern="([a-zA-Z]+\s)+([a-zA-Z]+)"
-        minlength="3"
-      />
-      <br />
-      <input
-        class="input-margin"
-        type="text"
-        name="address"
-        placeholder="address"
-        pattern="([a-zA-Z-]+\s)+(([a-zA-Z-]+)\s)*\d+"
-        minlenght="3"
-      />
-      <br />
-      <input
-        class="input-margin"
-        type="text"
-        name="creditCard"
-        pattern="(\d{4}(\s)?){4}"
-        placeholder="credit card numbers"
-        minlength="16"
-      />
-      <br />
-      <h5 class="h5">Total: {{ cartTotal }}</h5>
-      <button type="submit"><a routerLink="/confirmation">Submit</a></button>
-    </form> -->
+      <input type="submit" [disabled]="form.invalid" value="submit" />
+    </form>
   </div>
+
+
 </div>
+
+<!-- 
+
+<div class="form-margin">
+  <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-margin">
+    <label class="label-margin">Name</label>
+    <input
+      class="input-margin"
+      type="text"
+      name="name"
+      required
+      minlength="6"
+      [(ngModel)]="name"
+    />
+
+    <label class="label-margin">Address</label>
+    <input
+      class="input-margin"
+      type="text"
+      name="Address"
+      [(ngModel)]="adress"
+    />
+
+    <label class="label-margin">Card</label>
+    <input
+      class="input-margin"
+      type="text"
+      required
+      minlength="10"
+      [(ngModel)]="creditCard"
+    />
+    <h5 class="h5">Total: {{ cartTotal }}</h5>
+    <button class="label-margin" type="submit" [disabled]="form.invalid">
+      <a routerLink="/confirmation">Submit</a>
+    </button>
+  </form>
+
+  <!--    <form>
+    <h5>Fill you information to cofirm order</h5>
+    <input
+      class="input-margin"
+      type="text"
+      name="name"
+      placeholder="full name"
+      pattern="([a-zA-Z]+\s)+([a-zA-Z]+)"
+      minlength="3"
+    />
+    <br />
+    <input
+      class="input-margin"
+      type="text"
+      name="address"
+      placeholder="address"
+      pattern="([a-zA-Z-]+\s)+(([a-zA-Z-]+)\s)*\d+"
+      minlenght="3"
+    />
+    <br />
+    <input
+      class="input-margin"
+      type="text"
+      name="creditCard"
+      pattern="(\d{4}(\s)?){4}"
+      placeholder="credit card numbers"
+      minlength="16"
+    />
+    <br />
+    <h5 class="h5">Total: {{ cartTotal }}</h5>
+    <button type="submit"><a routerLink="/confirmation">Submit</a></button>
+  </form> 
+</div>  -->

@@ -4,7 +4,7 @@ img {
 }
 
 .form-margin {
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   margin-left: 500px;
   flex-direction: row;
 }
@@ -14,10 +14,11 @@ img {
   margin-right: 300px;
 }
 
-.input-margin {
-  margin-bottom: 12px;
+.h6 {
+  margin-bottom: 3px;
   margin-right: 300px;
   margin-top: 10px;
+  color: black;
 }
 
 .cart-item {
@@ -37,7 +38,7 @@ img {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 .number-input {
   width: 80px;

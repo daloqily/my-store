@@ -9,7 +9,7 @@
   <h5>{{ product.description }}</h5>
   <h4>{{ product.price }} SR</h4>
 
-  <select class="select-input">
+  <!--   <select class="select-input">
     <option
       *ngFor="let opt of options"
       [value]="opt.value"
@@ -17,7 +17,16 @@
     >
       {{ opt.value }}
     </option>
+  </select> -->
+  <select
+    class="select-input"
+    [(ngModel)]="amount"
+    (ngModelChange)="onAmountSelect(product, $event)"
+  >
+    <option *ngFor="let opt of options" [ngValue]="opt.value">
+      {{ opt.value }}
+    </option>
   </select>
 
-  <button class="add-btn" (click)="addToCart(product, amount)">Add</button>
+  <button class="add-btn" (click)="addToCart(product)">Add</button>
 </div>
