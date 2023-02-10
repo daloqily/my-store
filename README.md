@@ -7,13 +7,13 @@ Developing a single-page app through Angular
 
 ### view list of products
 
-# View Details of a product
+### View Details of a product
 
-# Add products to cart
+### Add products to cart
 
-# remove products from cart
+### remove products from cart
 
-# create an order
+### create an order
 
 ## Development server
 
