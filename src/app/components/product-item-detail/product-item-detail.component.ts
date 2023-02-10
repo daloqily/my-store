@@ -10,7 +10,7 @@ import { CartService } from "src/app/services/cart.service";
 })
 export class ProductItemDetailComponent implements OnInit {
   @Input() product: Product;
-
+  products: Product[];
   @Output() OnAmountSelect: EventEmitter<Product> = new EventEmitter();
   @Output() AddToCart: EventEmitter<Product> = new EventEmitter();
   amount = 0;
@@ -33,9 +33,15 @@ export class ProductItemDetailComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  //this approach has been developed with the help of session lead eng. Mohaned
   ngOnInit(): void {
     const params = this.route.snapshot.params;
-    this.product = this.productService.getProductById(params["id"]);
+    this.productService.getProduct().subscribe((res) => {
+      this.products = res;
+      this.product = res.filter((prod) => {
+        return prod.id == params["id"];
+      })[0];
+    });
   }
   onAmountSelect(product: Product, value: number): void {
     product.amount = value;
@@ -45,6 +51,5 @@ export class ProductItemDetailComponent implements OnInit {
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
     this.cartService.calculateCart();
-    alert("your product is added successfullly to the cart ");
   }
 }

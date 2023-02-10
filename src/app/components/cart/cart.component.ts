@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Product } from "src/app/models/Product";
 import { CartService } from "src/app/services/cart.service";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
@@ -10,7 +12,7 @@ import { Router } from "@angular/router";
 export class CartComponent implements OnInit {
   @Input() product: Product;
   cartProducts = this.cartService.getItems();
-  cartTotal = 0;
+  cartTotal?;
   name = "";
   address = "";
   creditCard = "";
@@ -29,24 +31,29 @@ export class CartComponent implements OnInit {
   ];
   // amount = this.cartService.amount;
 
-  constructor(private cartService: CartService) {
+  constructor(private route: Router, private cartService: CartService) {
     this.cartTotal = 0;
   }
 
   ngOnInit(): void {
+    this.cartProducts = this.cartService.getItems();
     this.cartTotal = this.cartService.calculateCart();
   }
   ngOnChange(): void {
     this.cartTotal = this.cartService.calculateCart();
   }
   updateAmount(product: Product, value: number): void {
-    this.cartService.updateAmount(product, value);
+    this.cartProducts = this.cartService.getItems();
+    this.cartTotal = this.cartService.calculateCart();
   }
   removerFromCart(prod: Product) {
     this.cartService.removerFromCart(prod);
-    alert("prod removed");
+    this.cartProducts = this.cartService.getItems();
+    this.cartTotal = this.cartService.calculateCart();
   }
   onSubmit(): void {
-    // this.Router.navigate(['/confirm'])
+    alert("in onSubmit");
+    this.cartService.setUserInfo(this.name, this.address, this.creditCard);
+    this.route.navigate(["/confirmation"]);
   }
 }

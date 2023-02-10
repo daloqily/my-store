@@ -39,6 +39,5 @@ export class ProductItemComponent implements OnInit {
     this.cartService.addToCart(product);
     this.cartService.calculateCart();
     //alert(product.price * product.amount);
-    alert("Your Product Has Been Added successfully");
   }
 }

@@ -2,30 +2,43 @@
   <div *ngIf="cartProducts.length == 0" class="empty-cart-message">
     Empty cart!
   </div>
-  <div *ngIf="cartProducts.length != 0" >
-  <div class="cart-item-" *ngFor="let product of cartProducts">
-    <div class="cart-item-details">
-      <img class="img" alt="product image " src="{{ product.url }}" />
-      <h5>{{ product.name }}</h5>
-      <h6>{{ product.description }}</h6>
-      <h5>{{ product.price }} SR</h5>
-      <button class="add-btn" (click)="removerFromCart(product)">remove</button>
-      <select
-        class="select-input"
-        [(ngModel)]="amount"
-        (ngModelChange)="updateAmount(product, $event)"
-      >
-        <option *ngFor="let opt of options" [ngValue]="product.amount">
-          {{ opt.value }}
-        </option>
-      </select>
+  <div *ngIf="cartProducts.length != 0">
+    <div class="cart-item-" *ngFor="let product of cartProducts">
+      <div class="cart-item-details">
+        <img class="img" alt="product image " src="{{ product.url }}" />
+        <h5>{{ product.name }}</h5>
+        <h6>{{ product.description }}</h6>
+        <h5>{{ product.price }} SR</h5>
+        <button class="add-btn" (click)="removerFromCart(product)">
+          Remove
+        </button>
+
+        <!--      <select
+          class="select-input"
+          [(ngModel)]="amount"
+          (ngModelChange)="updateAmount(product, $event)"
+        >
+          <option *ngFor="let opt of options" [ngValue]="product.amount">
+            {{ opt.value }}
+          </option>
+        </select> -->
+        <label>Amount</label>
+        <input
+          class="select-input"
+          type="number"
+          name="{{ product.name }}"
+          value="{{ product.amount }}"
+          min="0"
+          [(ngModel)]="product.amount"
+          (ngModelChange)="updateAmount(product, product.amount)"
+        />
+      </div>
     </div>
   </div>
-</div>
   <div class="form-margin">
     <form #form="ngForm" (ngSubmit)="onSubmit()">
       <h6 class="h6">Name</h6>
-      <input 
+      <input
         required
         minlength="3"
         placeholder="min length is 6"
@@ -34,8 +47,7 @@
         #FormTitle="ngModel"
         [(ngModel)]="name"
       />
-      
-  
+
       <h6 class="h6">Address</h6>
       <input
         required
@@ -45,7 +57,6 @@
         name="body"
         [(ngModel)]="address"
       />
-      
 
       <h6 class="h6">Card Number</h6>
       <input
@@ -58,14 +69,18 @@
         name="body"
         [(ngModel)]="creditCard"
       />
-      <br>
-      <br>
+      <br />
+      <h5>{{ cartTotal }} SR</h5>
+      <br />
 
-      <input type="submit" [disabled]="form.invalid" value="submit" />
+      <input
+        type="submit"
+        [disabled]="form.invalid"
+        value="submit"
+        [routerLink]="['/confirmation/{{product.id}}']"
+      />
     </form>
   </div>
-
-
 </div>
 
 <!-- 
