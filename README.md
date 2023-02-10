@@ -3,6 +3,18 @@
 This project is a requirement of Udacity's Full-Stack JavaScript Nanodegree
 Developing a single-page app through Angular
 
+## Key Features
+
+# view list of products
+
+# View Details of a product
+
+# Add products to cart
+
+# remove products from cart
+
+# create an order
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
