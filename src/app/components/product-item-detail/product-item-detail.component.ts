@@ -43,13 +43,17 @@ export class ProductItemDetailComponent implements OnInit {
       })[0];
     });
   }
-  onAmountSelect(product: Product, value: number): void {
+
+  onAmountSelect(product: Product, value: number): boolean {
     product.amount = value;
+    return true;
     //alert(product.amount);
   }
 
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
     this.cartService.calculateCart();
+
+    //alert(product.price * product.amount);
   }
 }

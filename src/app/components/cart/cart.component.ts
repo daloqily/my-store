@@ -52,8 +52,19 @@ export class CartComponent implements OnInit {
     this.cartTotal = this.cartService.calculateCart();
   }
   onSubmit(): void {
-    alert("in onSubmit");
+    //alert("in onSubmit");
     this.cartService.setUserInfo(this.name, this.address, this.creditCard);
     this.route.navigate(["/confirmation"]);
+  }
+  validateName(): void {}
+  validateAddress(adress: string): void {
+    if (adress.length < 10) {
+      alert("adress must be of 10 characters minimum");
+    }
+  }
+  validateCreditCard(card: string): void {
+    if (card.length < 10) {
+      alert("credit card number must be of 10 characters ");
+    }
   }
 }

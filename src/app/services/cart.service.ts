@@ -30,15 +30,19 @@ export class CartService {
   }
   removerFromCart(prod: Product): void {
     this.cartProducts = this.cartProducts.filter((product) => product != prod);
+    this.cartTotal = this.calculateCart();
     alert(`product ${prod.name} removed successfully`);
+    this.cartTotal = this.calculateCart();
   }
   getItems(): Product[] {
     return this.cartProducts;
   }
   updateAmount(product: Product, updatedAmount: number): void {
     this.cartProducts[product.id].amount = updatedAmount;
+    this.cartTotal = this.calculateCart();
   }
   calculateCart(): number {
+    this.cartTotal = 0;
     for (let i = 0; i < this.cartProducts.length; i++) {
       this.cartTotal +=
         this.cartProducts[i].price * this.cartProducts[i].amount;

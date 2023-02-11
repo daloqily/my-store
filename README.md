@@ -1,19 +1,35 @@
 # MyStore
 
 This project is a requirement of Udacity's Full-Stack JavaScript Nanodegree
-Developing a single-page app through Angular
+Developing a single-page application through Angular
 
-## Key Features
+---
 
-### view list of products
+my store is an E-commerce website for products listing and ordering
 
-### View Details of a product
+## OverView
 
-### Add products to cart
+### Key Features
 
-### remove products from cart
+#### - view list of products
 
-### create an order
+     Home page: (url/)
+
+#### - View Details of a product
+
+     Product details page: (url/product-detail/:id)
+
+#### - Add products to cart
+
+      Users can add products from Home page & Product detail page
+
+#### - remove products from cart
+
+     Cart page: (url/cart)
+
+#### - confirm an order
+
+     Confirmation page: (url/confirmation)
 
 ## Development server
 
